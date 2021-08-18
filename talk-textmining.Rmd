@@ -1,0 +1,252 @@
+---
+title: "Políticos en Twitter 🐦📦"
+author: 
+  - "Guada Gonzalez"
+output:
+  xaringan::moon_reader:
+    seal: false
+    css: "xaringan-themer.css"
+    nature:
+      navigation: 
+        scroll: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = TRUE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+library(tidytext)
+library(tidyverse)
+library(tm)
+library(igraph)
+library("ggraph")
+style_duo_accent(
+  primary_color = "#266098",
+  secondary_color = "#c7c7c7",
+  inverse_header_color = "#001f3d",
+    header_font_google = google_font("Roboto"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Fira Mono"),
+  link_color = "#040e59",  
+    link_decoration = "none"
+)
+```
+
+class: title-slide, center, middle, inverse
+
+background-image: url(https://github.com/Observatorio-de-Redes/politicosentwitter/raw/main/ShinyApp/www/img_net/Animation_fdt.gif)
+background-position: center
+background-size: 150px 160px
+# `r rmarkdown::metadata$title`
+####[`r fontawesome::fa("twitter")` @guadag12](https://twitter.com/guadag12)
+
+---
+class:  inverse, middle, center
+
+## GUADA GONZALEZ
+
+<img src="https://github.com/guadag12/talk-cienciassoccomputacionales/raw/main/img/img-guada.png" width="15%" />
+
+### Politóloga & Data Scientist
+
+#### Coordinadora [GICP Observatorio de Redes](https://twitter.com/O_de_R)
+
+#### Investigadora [ILCSS](https://twitter.com/ilcss_umd)
+
+#### Profesora en [Laboratorio de Políticas Públicas](https://twitter.com/LABPoliticasUBA)
+
+---
+class: middle, center
+
+## Web 🇦🇷
+
+<img src="https://github.com/Observatorio-de-Redes/politicosentwitter/raw/main/ShinyApp/www/shiny%20contest/img%20def.png" width="60%" />
+
+
+##### [www.politicosentwitter.com](www.politicosentwitter.com)
+
+---
+class: middle, center
+
+## PoliticxsentwitteR 🐦📦
+### R package
+
+<img src="https://github.com/guadag12/politicxsentwitteR/raw/main/man/figures/logo.png" width="25%" />
+
+
+#### [Repositorio](https://github.com/guadag12/politicxsentwitteR)
+#### [Web Español](https://guadag12.github.io/politicxsentwitteR/index.html)
+
+
+---
+class: middle, center
+
+### ¿QUÉ ES LA CIENCIA DE DATOS?
+
+![](https://ichi.pro/assets/images/max/724/1*km81hu0_UaMm1aTz3VHJog.png)
+
+---
+
+### ¿POR DÓNDE PUEDO ARRANCAR?
+
+* Recursos online:
+  * [R4DS](https://es.r4ds.hadley.nz/)
+  * [Cursera](https://www.coursera.org/)
+  * [edx](https://www.edx.org/) 
+
+* Laboratorio de Políticas Públicas en UBA:
+  * [Web](http://labpoliticasuba.com/)
+  * [Clases Online](https://github.com/labpoliticasuba)
+  * [Twitter](https://twitter.com/LABPoliticasUBA)
+
+* Metodologia de análisis en Opinión Pública ([programa](http://cienciapolitica.sociales.uba.ar/wp-content/uploads/sites/6/2019/07/prog_met4op_Tomas_A_Olego.pdf)) 
+
+
+* Cursos de la Dirección de Cultura en R 
+
+* Laboratorio de Datos (Exactas UBA):
+  * [materiales y clases](http://materias.df.uba.ar/lda2021c1/171-2/)
+  
+* Comunidad: 
+  *  [Rladies](https://twitter.com/RLadiesBA) 
+  *  [R en Buenos Aires](https://twitter.com/renbaires) 
+
+---
+class: middle, center
+### Text Mining
+
+![](http://www.datascience.manchester.ac.uk/media/1739/nlp-tm-diagramtif.jpg?width=481&height=444)
+
+---
+class: inverse, middle, center
+
+### Tipos de datos
+
+---
+
+#### Estructurados
+
+Están altamente organizados y formateados de tal manera que se pueden buscar fácilmente en bases de datos relacionales
+
+```{r, echo=TRUE, include=TRUE}
+library(politicxsentwitteR)
+data <- politicxsentwitteR::politicxs_data
+DT::datatable(head(data, 5),fillContainer = FALSE, options = list(pageLength = 8))
+```
+
+---
+
+#### No Estructurados
+No tienen un formato u organización predefinidos, lo que hace que sea mucho más difícil de recopilar, procesar y analizar.
+
+```{r, echo=TRUE, include=TRUE}
+library(politicxsentwitteR)
+#data_af <- get_timeline_data(screen.name = "alferdez")
+data_af <- readRDS("data_af.rds")
+DT::datatable(head(data.frame(text =data_af[,"text"]), 5),fillContainer = FALSE, options = list(pageLength = 8))
+```
+
+---
+
+class: inverse, middle, center
+
+## Más del 80% de la data al dia de hoy esta compuesta por data no estructurada o semi-estructurada.
+
+---
+
+### Dificultades de hoy
+</br>
+#### 1. Análisis escalables y eficientes
+</br>
+#### 2. Mejoras en multilenguajes
+</br>
+#### 3. Integración del conocimiento adquirido
+</br>
+#### 4. Ambiguedad
+
+---
+
+class: middle, center
+
+![](https://miro.medium.com/max/700/0*ewkxRItArykG27dU.png)
+
+---
+class: inverse, middle, center
+### Análisis de sentimiento y tópicos
+
+---
+class: middle, center
+
+<img src="https://miro.medium.com/max/400/1*V9iViGtxOnBE3_Y8SzIJCg.jpeg" width="120%" />
+
+---
+
+### Grado de participación del humano:
+</br>
+
+#### 1. Codificación a mano (100%)
+
+</br>
+
+#### 2. Supervisado
+</br>
+
+#### 3. Sin supervisión (0%)
+
+---
+
+### 4 Principios para el análisis de textos: 
+
+</br>
+#### 1. Todos los modelos cuantitativos de lenguaje son malos .... Pero algunos son útiles
+</br>
+--
+
+#### 2. Los métodos cuantitativos aumentan el poder de los humanos, no los reemplazan
+</br>
+
+--
+#### 3. No hay UN método global ideal para analisis cuantitativo de textos
+</br>
+
+--
+
+#### 4. Validar, Validar, Validar
+
+</br>
+##### (Grimer & Stewart, 2013)
+
+---
+
+class: middle, center
+
+## Nota del [@O_de_R](https://twitter.com/O_de_R)
+
+### Aborto en el Congreso
+
+<img src="https://miro.medium.com/max/624/1*j2ILXRAa92mVM2mA6ao4Xg.png" width="120%" />
+
+#### [Nota completa](https://oderedes.medium.com/abortolegal-del-congreso-a-las-redes-ida-y-vuelta-6c4919d74040)
+
+
+---
+
+class: inverse, middle, center
+
+# GRACIAS!🥰 
+</br>
+
+## ESTEMOS EN CONTACTO! 🙌 👇
+
+[`r fontawesome::fa("twitter")` @guadag12](https://twitter.com/guadag12)&nbsp;&nbsp;&nbsp;&nbsp; [`r fontawesome::fa("github")` @guadag12](http://github.com/guadag12) &nbsp;&nbsp;&nbsp;&nbsp; [`r fontawesome::fa("paper-plane")` guadagonz12@gmail.com](guadagonz12@gmail.com)&nbsp;&nbsp;&nbsp;&nbsp;
