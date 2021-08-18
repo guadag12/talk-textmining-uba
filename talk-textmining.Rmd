@@ -124,6 +124,7 @@ class: middle, center
 
 ---
 class: middle, center
+
 ### Text Mining
 
 ![](http://www.datascience.manchester.ac.uk/media/1739/nlp-tm-diagramtif.jpg?width=481&height=444)
@@ -142,7 +143,7 @@ Están altamente organizados y formateados de tal manera que se pueden buscar f�
 ```{r, echo=TRUE, include=TRUE}
 library(politicxsentwitteR)
 data <- politicxsentwitteR::politicxs_data
-DT::datatable(head(data, 5),fillContainer = FALSE, options = list(pageLength = 8))
+rmarkdown::paged_table(head(data, 3))
 ```
 
 ---
@@ -153,8 +154,8 @@ No tienen un formato u organización predefinidos, lo que hace que sea mucho má
 ```{r, echo=TRUE, include=TRUE}
 library(politicxsentwitteR)
 #data_af <- get_timeline_data(screen.name = "alferdez")
-data_af <- readRDS("data_af.rds")
-DT::datatable(head(data.frame(text =data_af[,"text"]), 5),fillContainer = FALSE, options = list(pageLength = 8))
+data_af <- read.csv("https://github.com/guadag12/talk-textmining-uba/raw/gh-pages/data/data_af.csv")
+rmarkdown::paged_table(head(data.frame(text =data_af[,"text"]), 3))
 ```
 
 ---

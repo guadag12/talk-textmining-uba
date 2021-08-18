@@ -5,15 +5,8 @@
     <meta charset="utf-8" />
     <meta name="author" content="Guada Gonzalez" />
     <script src="talk-textmining_files/header-attrs/header-attrs.js"></script>
-    <script src="talk-textmining_files/htmlwidgets/htmlwidgets.js"></script>
-    <script src="talk-textmining_files/jquery/jquery.min.js"></script>
-    <link href="talk-textmining_files/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
-    <script src="talk-textmining_files/datatables-binding/datatables.js"></script>
-    <link href="talk-textmining_files/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
-    <link href="talk-textmining_files/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
-    <script src="talk-textmining_files/dt-core/js/jquery.dataTables.min.js"></script>
-    <link href="talk-textmining_files/crosstalk/css/crosstalk.css" rel="stylesheet" />
-    <script src="talk-textmining_files/crosstalk/js/crosstalk.min.js"></script>
+    <link href="talk-textmining_files/pagedtable/css/pagedtable.css" rel="stylesheet" />
+    <script src="talk-textmining_files/pagedtable/js/pagedtable.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
@@ -105,6 +98,7 @@ class: middle, center
 
 ---
 class: middle, center
+
 ### Text Mining
 
 ![](http://www.datascience.manchester.ac.uk/media/1739/nlp-tm-diagramtif.jpg?width=481&amp;height=444)
@@ -124,11 +118,14 @@ Están altamente organizados y formateados de tal manera que se pueden buscar f�
 ```r
 library(politicxsentwitteR)
 data &lt;- politicxsentwitteR::politicxs_data
-DT::datatable(head(data, 5),fillContainer = FALSE, options = list(pageLength = 8))
+rmarkdown::paged_table(head(data, 3))
 ```
 
-<div id="htmlwidget-462b26ac5850943c8d73" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-462b26ac5850943c8d73">{"x":{"filter":"none","fillContainer":false,"data":[["1","2","3","4","5"],["1204088748645978112","841757182257463296","1277698598860476416","166177152","175273213"],["A_Carambia","Adriana_Ruarte","AgenciaAfi","AgriculturaAR","AgustinLaje"],["deputies","deputies","national executive","national executive","others"],["Diputado Nacional por Santa Cruz-MoVeRe\n\n\nPadre de Fran y Martu. Hincha de Boca","Vecina de Deán Funes. Docente. Casada con Tato, madre de 3 hijos. Diputada Nacional por Córdoba @juntoscambioar 🇦🇷","Cuenta oficial de la Agencia Federal de Inteligencia - AFI.\nPresidencia de la Nación.\nMás información en https://t.co/lZ7fwPBQzo","Cuenta oficial del Ministerio de Agricultura, Ganadería y Pesca 🇦🇷","Escritor. Lic. en Ciencia Política, Mgter. en Filosofía. Libros: Los mitos setentistas, Cuando el relato es una farsa, El libro negro de la Nueva Izquierda."],["Antonio Carambia","Adriana Ruarte","Agencia Federal de Inteligencia - AFI","Ministerio de Agricultura, Ganadería y Pesca","Agustín Laje"],["M","F","ND","ND","M"],[183,1206,2508,162332,457882],["http://pbs.twimg.com/profile_images/1204089585338343425/NHCnYYZD_normal.jpg","http://pbs.twimg.com/profile_images/1270010134681583618/pXIR_MZq_normal.jpg","http://pbs.twimg.com/profile_images/1277698875684466691/REbhEZF-_normal.jpg","http://pbs.twimg.com/profile_images/1387409813601148930/nNJFaJR__normal.jpg","http://pbs.twimg.com/profile_images/1332364353757122561/0hZ_EyRr_normal.jpg"],["ar","ar","ar","ar","ar"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>user_id<\/th>\n      <th>screen_name<\/th>\n      <th>category<\/th>\n      <th>description<\/th>\n      <th>name<\/th>\n      <th>gender<\/th>\n      <th>followers_count<\/th>\n      <th>profile_image_url<\/th>\n      <th>country<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"columnDefs":[{"className":"dt-right","targets":7},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+&lt;div data-pagedtable="false"&gt;
+  &lt;script data-pagedtable-source type="application/json"&gt;
+{"columns":[{"label":["user_id"],"name":[1],"type":["chr"],"align":["left"]},{"label":["screen_name"],"name":[2],"type":["chr"],"align":["left"]},{"label":["category"],"name":[3],"type":["chr"],"align":["left"]},{"label":["description"],"name":[4],"type":["chr"],"align":["left"]},{"label":["name"],"name":[5],"type":["chr"],"align":["left"]},{"label":["gender"],"name":[6],"type":["chr"],"align":["left"]},{"label":["followers_count"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["profile_image_url"],"name":[8],"type":["chr"],"align":["left"]},{"label":["country"],"name":[9],"type":["chr"],"align":["left"]}],"data":[{"1":"1204088748645978112","2":"A_Carambia","3":"deputies","4":"Diputado Nacional por Santa Cruz-MoVeRe\\n\\n\\nPadre de Fran y Martu. Hincha de Boca","5":"Antonio Carambia","6":"M","7":"183","8":"http://pbs.twimg.com/profile_images/1204089585338343425/NHCnYYZD_normal.jpg","9":"ar"},{"1":"841757182257463296","2":"Adriana_Ruarte","3":"deputies","4":"Vecina de Deán Funes. Docente. Casada con Tato, madre de 3 hijos. Diputada Nacional por Córdoba @juntoscambioar &lt;U+0001F1E6&gt;&lt;U+0001F1F7&gt;","5":"Adriana Ruarte","6":"F","7":"1206","8":"http://pbs.twimg.com/profile_images/1270010134681583618/pXIR_MZq_normal.jpg","9":"ar"},{"1":"1277698598860476416","2":"AgenciaAfi","3":"national executive","4":"Cuenta oficial de la Agencia Federal de Inteligencia - AFI.\\nPresidencia de la Nación.\\nMás información en https://t.co/lZ7fwPBQzo","5":"Agencia Federal de Inteligencia - AFI","6":"ND","7":"2508","8":"http://pbs.twimg.com/profile_images/1277698875684466691/REbhEZF-_normal.jpg","9":"ar"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  &lt;/script&gt;
+&lt;/div&gt;
 
 ---
 
@@ -139,12 +136,15 @@ No tienen un formato u organización predefinidos, lo que hace que sea mucho má
 ```r
 library(politicxsentwitteR)
 #data_af &lt;- get_timeline_data(screen.name = "alferdez")
-data_af &lt;- readRDS("data_af.rds")
-DT::datatable(head(data.frame(text =data_af[,"text"]), 5),fillContainer = FALSE, options = list(pageLength = 8))
+data_af &lt;- read.csv("https://github.com/guadag12/talk-textmining-uba/raw/gh-pages/data/data_af.csv")
+rmarkdown::paged_table(head(data.frame(text =data_af[,"text"]), 3))
 ```
 
-<div id="htmlwidget-762d028ce02fa0596b64" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-762d028ce02fa0596b64">{"x":{"filter":"none","fillContainer":false,"data":[["1","2","3","4","5"],["Desatemos la esperanza. Vamos a volver para ser mejores. #EntreTodos https://t.co/Uoed2WF2jX","Para salir del laberinto al que vamos a entrar el diez de diciembre debemos trabajar todos, codo a codo, nadie sobra, todos hacen falta. https://t.co/Ddjx1gZJPw","Felicitaciones @bordet por tu merecidisimo triunfo. \n\nEl pueblo de Entre Ríos renovó su esperanza. Vamos Argentina.","Hace tiempo que una gran parte de nuestra sociedad espera que nos unamos para salir adelante.\n\nLa construcción de una coalición electoral y de gobierno y un programa con bases y puntos acordados lo hará posible.\n\nEl camino para ponernos de pie es entre todas y entre todos. https://t.co/po8ZraPvhs","¡Feliz Día de la Bandera! https://t.co/8b04UV9uEG"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>text<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":8,"order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}],"lengthMenu":[8,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+&lt;div data-pagedtable="false"&gt;
+  &lt;script data-pagedtable-source type="application/json"&gt;
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["text"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"Desatemos la esperanza. Vamos a volver para ser mejores. #EntreTodos https://t.co/Uoed2WF2jX","_rn_":"1"},{"1":"Para salir del laberinto al que vamos a entrar el diez de diciembre debemos trabajar todos, codo a codo, nadie sobra, todos hacen falta. https://t.co/Ddjx1gZJPw","_rn_":"2"},{"1":"Felicitaciones @bordet por tu merecidisimo triunfo. \\n\\nEl pueblo de Entre Ríos renovó su esperanza. Vamos Argentina.","_rn_":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  &lt;/script&gt;
+&lt;/div&gt;
 
 ---
 
